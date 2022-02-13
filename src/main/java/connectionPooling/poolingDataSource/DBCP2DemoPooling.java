@@ -1,5 +1,6 @@
-package connectionPooling.basicDataSource;
+package connectionPooling.poolingDataSource;
 
+import connectionPooling.basicDataSource.DBConnectionDBCP2Basic;
 import connectionPooling.util.SqlGenerator;
 
 import java.sql.Connection;
@@ -15,12 +16,12 @@ import java.sql.Statement;
  * ==========   =================   ==============  ===============================================
  * 2022.02.01   A.Rayani
  */
-public class DBCP2Demo {
+public class DBCP2DemoPooling {
     private static final String CREATE_TABLE_FILE = "src/main/resources/SampleDatabase-createObjects.sql";
     private static final String SQL_FILE = "src/main/resources/SampleDatabase-loadData.sql";
 
     public static void main(String[] args) throws SQLException {
-        Connection connection = DBConnectionDBCP2Basic.getConnection();
+        Connection connection = DBConnectionDBCP2Pooling.getConnection();
         connection.setAutoCommit(false);
         String createTable = SqlGenerator.generateSlqFromFile(CREATE_TABLE_FILE);
         Statement preparedStatement = connection.createStatement();
